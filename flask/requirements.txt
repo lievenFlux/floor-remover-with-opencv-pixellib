@@ -8,8 +8,8 @@ pycocotools
 scikit-image
 imutils
 ### mac ###
-tensorflow-macos
-tensorflow-metal
+#tensorflow-macos
+#tensorflow-metal
 ### win ###
-#tensorflow
-#tensorflow-gpu
+tensorflow
+tensorflow-gpu
