@@ -63,6 +63,6 @@ This project is heavily inspired by this medium post: [https://wt-blog.medium.co
 - Add depth of field to new texture
 - Add shadow effects to \*context
 
-\*context = the photo that has been uploaded, preferably a photo of a room with a floor
+\*context = the photo that has been uploaded
 
 Made with ❤️
