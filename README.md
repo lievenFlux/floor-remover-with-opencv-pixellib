@@ -57,12 +57,10 @@ This project is heavily inspired by this medium post: [https://wt-blog.medium.co
 
 - Error checking
 - Improve auto rotate algorithm
-- Improve scaling of new texture to \*context
-- Match horizontal axis of the new texture to \*context
+- Improve scaling of new texture to original photo
+- Match horizontal axis of the new texture to original photo
 - Get a better result (sharper edges, more precise cutout of the floor) from the segmentation
 - Add depth of field to new texture
-- Add shadow effects to \*context
-
-\*context = the photo that has been uploaded
+- Add shadow effects to original photo
 
 Made with ❤️
