@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# POC floor-remover-app-with-opencv-pixellib
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The goal of this project is to create a web app where you can upload a photo. this is done via a rest api to a flask app where the photo is manipulated and send back to the web app. There is also an example of an implementation of opencv in react if you prefer manipulating images in javascript. This is for the experimenter's delight.
 
-## Available Scripts
+![example](/example.png "example")
 
-In the project directory, you can run:
+**Note**
 
-### `npm start`
+If you like to try this on a mac you should substitute `tensorflow` and `tensorflow-gpu` with `tensorflow-macos` and `tensorflow-metal` in requirements.txt located in the flask folder. Also, you have to substitute all imports `tensorflow.python.keras` with `tensorflow.keras` exept for `from tensorflow.python.keras.utils.layer_utils import get_source_inputs` in flask/lib/python3.8/site-packages/pixellib/semantic/deeplab.py.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation Web
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+cd into web directory and run:
 
-### `npm test`
+### `yarn && yarn start`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation Flask
 
-### `npm run build`
+cd into flask directory and create a virtual environment with:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `conda create --prefix ./env python=3.8`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Activate the environment:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `conda activate ./env`
 
-### `npm run eject`
+Install dependencies:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### `python3 -m pip install -r requirements.txt`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If your installation of pyqt5 hangs, go [here](https://stackoverflow.com/questions/73714829/pip-install-pyqt5-it-cannot-go-on/74071222#74071222)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Launch dev server:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### `python3 app.py`
 
-## Learn More
+## Tests
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To check and see if tensorflow is correctly installed and to check and see the bitrate of your computer you can run the script below inside the flask folder:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### `python3 test.py`
 
-### Code Splitting
+## Download model
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+You can download the xception model [here](https://github.com/ayoolaolafenwa/PixelLib/releases/download/1.3/deeplabv3_xception65_ade20k.h5). It should have the name `deeplabv3_xception65_ade20k.h5` and belongs in the flask/models folder.
 
-### Analyzing the Bundle Size
+## Inspiration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This project is heavily inspired by this medium post: [https://wt-blog.medium.com/room-flooring-designer-with-ai-technology-282403ec9cd](https://wt-blog.medium.com/room-flooring-designer-with-ai-technology-282403ec9cd)
 
-### Making a Progressive Web App
+## Info
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+[Opencv](https://docs.opencv.org/4.x/index.html)
+[Pixellib](https://pixellib.readthedocs.io/en/latest/)
 
-### Advanced Configuration
+## Todo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Error checking
+- Improve auto rotate algorithm
+- Improve scaling of new texture to \*context
+- Match horizontal axis of the new texture to \*context
+- Get a better result (sharper edges, more precise cutout of the floor) from the segmentation
+- Add depth of field to new texture
+- Add shadow effects to \*context
 
-### Deployment
+\*context = the photo that has been uploaded, preferably a photo of a room with a floor
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Made with ❤️
